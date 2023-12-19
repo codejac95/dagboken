@@ -1,0 +1,88 @@
+body {
+    background-color: bisque;   
+         
+} 
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#createBox{
+    background-color: rgba(159, 120, 10, 0.229);
+    outline: solid 2px rgb(4, 4, 4);
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 20%;    
+    left: 1%;
+    padding: 5px;
+    
+}
+#showAllPosts {        
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#showByDate {        
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#dateBox {
+    background-color: rgba(159, 120, 10, 0.229);
+    outline: solid 2px rgb(4, 4, 4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 20px auto; 
+    max-width: 600px;
+}
+
+#home {        
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#searchBox {
+    background-color: rgba(159, 120, 10, 0.229);
+    outline: solid 2px rgb(4, 4, 4);
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 20%;    
+    left: 1%;
+    padding: 5px;          
+}
+#resultBox {
+    background-color: rgba(159, 120, 10, 0.229);
+    outline: solid 2px rgb(4, 4, 4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 20px auto; 
+    max-width: 600px;
+}

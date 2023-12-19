@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagbok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+      <a id=home href="/">Startsida</a>
+
+    <div id = resultBox>
+        
+        <ul>
+            <li th:each="dagbok : ${dagböcker}" th:id="'dagbok_' + ${dagbok.id}">
+                <h2 th:text="${dagbok.rubrik}"></h2>
+                <span th:text="${dagbok.datum}"></span>
+                <p th:text="${dagbok.text}"></p>
+                <a th:href="@{radera(id=${dagbok.id})}">Radera</a>
+        
+                <div>
+                    <form method ="post" th:action="@{/redigera}">
+                    <input type="hidden" th:name="id" th:value="${dagbok.id}" />
+                    <input type="text" th:name="rubrik" />
+                    <input type="date" th:name="datum" />
+                    <textarea name="text"></textarea>
+                    <button type="submit">Spara ändringar</button>
+                    </form>
+                </div>   
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

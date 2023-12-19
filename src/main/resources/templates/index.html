@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagbok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id = header>
+         <h1>Dagboken!</h1>
+    </div>
+
+    <a id=showAllPosts href="/dagbok">Visa alla inlägg</a>
+
+    <a id=showByDate href="/visaMedDatum">Sök med datum</a>
+
+    <div id = createBox>
+        <h1>Skapa inlägg</h1>
+        <form method="post" th:action="@{/skapa}">
+            <input type="text" name="rubrik" placeholder="Rubrik"><br><br>
+            <textarea name="text" aria-setsize="large" placeholder="Text"></textarea><br>
+
+            <input type="date" name="datum"><br>          
+            <button>Lägg till</button>
+        </form>
+    </div>
+
+    <div id = dateBox> 
+        <ul>
+            <h1>Dagens inlägg:</h1>
+            <li th:each="dagbok : ${dagböcker}" >
+                <h2 th:text="${dagbok.rubrik}"></h2>
+                <span th:text="${dagbok.datum}"></span>
+                <p th:text="${dagbok.text}"></p>
+            </li>
+        </ul> 
+</div>
+</body>
+</html>
