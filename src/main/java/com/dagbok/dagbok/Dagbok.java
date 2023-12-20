@@ -12,10 +12,10 @@ public class Dagbok {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String rubrik;
+    private String header;
     private String text;
-    private LocalDate datum;
-    private int raderad;
+    private LocalDate date;
+    private int deleted;
 
     public int getId() {
         return id;
@@ -23,11 +23,11 @@ public class Dagbok {
     public void setId(int id) {
         this.id = id;
     }
-    public String getRubrik() {
-        return rubrik;
+    public String getHeader() {
+        return header;
     }
-    public void setRubrik(String rubrik) {
-        this.rubrik = rubrik;
+    public void setHeader(String header) {
+        this.header = header;
     }
     public String getText() {
         return text;
@@ -35,17 +35,17 @@ public class Dagbok {
     public void setText(String text) {
         this.text = text;
     }
-    public LocalDate getDatum() {
-        return datum;
+    public LocalDate getDate() {
+        return date;
     }
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
-    public int getRaderad() {
-        return raderad;
+    public int getDeleted() {
+        return deleted;
     }
-    public void setRaderad(int raderad) {
-        this.raderad = raderad;
+    public void setRaderad(int deleted) {
+        this.deleted = deleted;
     }
     
 }

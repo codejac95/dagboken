@@ -14,16 +14,16 @@
 
     <div id = resultBox>    
         <ul>
-            <li th:each="dagbok : ${dagböcker}">
-                <h2 th:text="${dagbok.rubrik}"></h2>
-                <span th:text="${dagbok.datum}"></span>
-                <p th:text="${dagbok.text}"></p>
-                <a th:href="@{radera(id=${dagbok.id})}">Radera</a>
+            <li th:each="diary : ${diarys}">
+                <h2 th:text="${diary.header}"></h2>
+                <span th:text="${diary.date}"></span>
+                <p th:text="${diary.text}"></p>
+                <a th:href="@{delete(id=${diary.id})}" class = "deleteBtn">Radera</a>
                 <div>
-                    <form method ="post" th:action="@{/redigera}">
-                    <input type="hidden" th:name="id" th:value="${dagbok.id}" />
-                    <input type="text" th:name="rubrik" required />
-                    <input type="date" th:name="datum" required />
+                    <form method ="post" th:action="@{/edit}">
+                    <input type="hidden" th:name="id" th:value="${diary.id}" />
+                    <input type="text" th:name="header" required />
+                    <input type="date" th:name="date" required />
                     <textarea name="text" required></textarea>
                     <button type="submit">Spara ändringar</button>
                     </form>

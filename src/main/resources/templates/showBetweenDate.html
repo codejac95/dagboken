@@ -15,19 +15,19 @@
 
     <div id=searchBox>
         <h3>Sök inlägg mellan datum</h3>
-        <form method="post" th:action="@{/visaMellanDatum}">
-            <input type="date" name="datum1" required>
-            <input type="date" name="datum2" required><br>         
+        <form method="post" th:action="@{/showBetweenDate}">
+            <input type="date" name="date1" required>
+            <input type="date" name="date2" required><br>         
             <button type="submit">Sök</button>
         </form>
     </div>
 
     <div id=resultBox> 
         <ul>
-            <li th:each="dagbok : ${dagböcker}" >
-                <h2 th:text="${dagbok.rubrik}"></h2>
-                <span th:text="${dagbok.datum}"></span>
-                <p th:text="${dagbok.text}"></p>
+            <li th:each="diary : ${diarys}" >
+                <h2 th:text="${diary.header}"></h2>
+                <span th:text="${diary.date}"></span>
+                <p th:text="${diary.text}"></p>
             </li>
         </ul>
     </div>

@@ -18,49 +18,49 @@ public class DagbokController {
     @GetMapping
     public String getIndex(Model model) {
         LocalDate today = LocalDate.now();
-        model.addAttribute("dagböcker", dagbokRepository.findByNotDeletedAndDate(today));
+        model.addAttribute("diarys", dagbokRepository.findByNotDeletedAndDate(today));
         return "index";
     }
-    @PostMapping("/skapa")
-    public String skapaInlägg(@RequestParam("rubrik") String nyRubrik,
-                              @RequestParam("datum") LocalDate nyDatum,
-                              @RequestParam("text") String nyText) {
+    @PostMapping("/create")
+    public String createPost(@RequestParam("header") String newHeader,
+                              @RequestParam("date") LocalDate newDate,
+                              @RequestParam("text") String newText) {
         Dagbok dagbok = new Dagbok();
-        dagbok.setRubrik(nyRubrik);
-        dagbok.setDatum(nyDatum);
-        dagbok.setText(nyText);
+        dagbok.setHeader(newHeader);
+        dagbok.setDate(newDate);
+        dagbok.setText(newText);
         dagbokRepository.save(dagbok);
         return "redirect:/";
     }
-    @GetMapping("/radera")
-    public String radera(@RequestParam int id) {
-        dagbokRepository.raderadDagbok(id);
-        return "redirect:/dagbok";
+    @GetMapping("/delete")
+    public String delete(@RequestParam int id) {
+        dagbokRepository.deletedDiary(id);
+        return "redirect:/allPosts";
     }
   
-    @PostMapping("/redigera")
-    public String redigeraInlägg(@RequestParam("id") int id,
-                                 @RequestParam("rubrik") String nyRubrik,
-                                 @RequestParam("datum") LocalDate nyDatum,
-                                 @RequestParam("text") String nyText) {
-        dagbokRepository.redigeraDagbok(id, nyRubrik, nyDatum, nyText);
-        return "redirect:/dagbok";
+    @PostMapping("/edit")
+    public String editPost(@RequestParam("id") int id,
+                                 @RequestParam("header") String newHeader,
+                                 @RequestParam("date") LocalDate newDate,
+                                 @RequestParam("text") String newText) {
+        dagbokRepository.editDiary(id, newHeader, newDate, newText);
+        return "redirect:/allPosts";
     }
-    @GetMapping("/dagbok")
-    public String visaDagbok(Model model) {
-        model.addAttribute("dagböcker", dagbokRepository.findByNotDeleted());
-        return "dagbok";
+    @GetMapping("/allPosts")
+    public String showDiary(Model model) {
+        model.addAttribute("diarys", dagbokRepository.findByNotDeleted());
+        return "allPosts";
     }
   
-   @GetMapping("/visaMellanDatum")
-    public String visaMedDatumPage() {
-        return "visaMellanDatum";
+   @GetMapping("/showBetweenDate")
+    public String showBetweenDate() {
+        return "showBetweenDate";
     }
 
-    @PostMapping("/visaMellanDatum")
-    public String visaMedDatum (@RequestParam("datum1") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum1,
-                                @RequestParam("datum2") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum2, Model model) {
-        model.addAttribute("dagböcker", dagbokRepository.searchBetweenDate(datum1,datum2));
-        return "visaMellanDatum";
+    @PostMapping("/showBetweenDate")
+    public String showBetweenDate (@RequestParam("date1") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date1,
+                                   @RequestParam("date2") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date2, Model model) {
+        model.addAttribute("diarys", dagbokRepository.searchBetweenDate(date1,date2));
+        return "showBetweenDate";
     }
 }

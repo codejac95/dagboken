@@ -11,17 +11,17 @@
          <h1>Dagboken</h1>
     </div>
 
-    <a id=showAllPosts href="/dagbok">Visa alla inlägg</a>
+    <a id=showAllPosts href="/allPosts">Hantera alla inlägg</a>
 
-    <a id=showByDate href="/visaMellanDatum">Sök med datum</a>
+    <a id=showBetweenDate href="/showBetweenDate">Sök med datum</a>
 
     <div id = createBox>
         <h1>Skapa inlägg</h1>
-        <form method="post" th:action="@{/skapa}">
-            <input type="text" name="rubrik" placeholder="Rubrik" required><br><br>
+        <form method="post" th:action="@{/create}">
+            <input type="text" name="header" placeholder="Rubrik" required><br><br>
             <textarea name="text" placeholder="Text" required></textarea><br>
 
-            <input type="date" name="datum" required><br>          
+            <input type="date" name="date" required><br>          
             <button>Lägg till</button>
         </form>
     </div>
@@ -29,10 +29,10 @@
     <div id = dateBox> 
         <ul>
             <h1>Dagens inlägg:</h1>
-            <li th:each="dagbok : ${dagböcker}" >
-                <h2 th:text="${dagbok.rubrik}"></h2>
-                <span th:text="${dagbok.datum}"></span>
-                <p th:text="${dagbok.text}"></p>
+            <li th:each="diary : ${diarys}" >
+                <h2 th:text="${diary.header}"></h2>
+                <span th:text="${diary.date}"></span>
+                <p th:text="${diary.text}"></p>
             </li>
         </ul> 
 </div>
