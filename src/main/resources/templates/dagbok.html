@@ -10,15 +10,13 @@
    
       <a id=home href="/">Startsida</a>
 
-    <div id = resultBox>
-        
+    <div id = resultBox>    
         <ul>
-            <li th:each="dagbok : ${dagböcker}" th:id="'dagbok_' + ${dagbok.id}">
+            <li th:each="dagbok : ${dagböcker}">
                 <h2 th:text="${dagbok.rubrik}"></h2>
                 <span th:text="${dagbok.datum}"></span>
                 <p th:text="${dagbok.text}"></p>
                 <a th:href="@{radera(id=${dagbok.id})}">Radera</a>
-        
                 <div>
                     <form method ="post" th:action="@{/redigera}">
                     <input type="hidden" th:name="id" th:value="${dagbok.id}" />

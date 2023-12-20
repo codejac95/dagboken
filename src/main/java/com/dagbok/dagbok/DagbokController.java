@@ -1,8 +1,6 @@
 package com.dagbok.dagbok;
 
 import java.time.LocalDate;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -54,14 +52,15 @@ public class DagbokController {
         return "dagbok";
     }
   
-   @GetMapping("/visaMedDatum")
+   @GetMapping("/visaMellanDatum")
     public String visaMedDatumPage() {
-        return "visaMedDatum";
+        return "visaMellanDatum";
     }
 
-    @PostMapping("/visaMedDatum")
-    public String visaMedDatum(@RequestParam("datum") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum, Model model) {
-        model.addAttribute("dagböcker", dagbokRepository.searchByDate(datum));
-        return "visaMedDatum";
+    @PostMapping("/visaMellanDatum")
+    public String visaMedDatum (@RequestParam("datum1") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum1,
+                                @RequestParam("datum2") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum2, Model model) {
+        model.addAttribute("dagböcker", dagbokRepository.searchBetweenDate(datum1,datum2));
+        return "visaMellanDatum";
     }
 }

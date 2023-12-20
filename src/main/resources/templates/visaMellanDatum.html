@@ -14,9 +14,10 @@
     <a id=home href="/">Startsida</a>
 
     <div id=searchBox>
-        <h1>Sök inlägg</h1>
-        <form method="post" th:action="@{/visaMedDatum}">
-            <input type="date" name="datum" required><br>          
+        <h3>Sök inlägg mellan datum</h3>
+        <form method="post" th:action="@{/visaMellanDatum}">
+            <input type="date" name="datum1" required>
+            <input type="date" name="datum2" required><br>         
             <button type="submit">Sök</button>
         </form>
     </div>

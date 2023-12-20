@@ -16,8 +16,9 @@ public interface DagbokRepository extends CrudRepository<Dagbok, Integer> {
     @Query("SELECT d FROM Dagbok d WHERE d.raderad = 0 AND d.datum = :datum")
     List<Dagbok> findByNotDeletedAndDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum);
 
-    @Query("SELECT d FROM Dagbok d WHERE d.raderad = 0 AND d.datum = :datum")
-    List<Dagbok> searchByDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum);
+    @Query("SELECT d FROM Dagbok d WHERE d.raderad = 0 AND d.datum BETWEEN :datum1 AND :datum2")
+    List<Dagbok> searchBetweenDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum1,
+                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate datum2);
 
     @Transactional
     @Modifying
