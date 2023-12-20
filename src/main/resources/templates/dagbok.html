@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
+    <div id = header>
+        <h1>Alla inlägg</h1>
+   </div>
       <a id=home href="/">Startsida</a>
 
     <div id = resultBox>    
@@ -20,9 +22,9 @@
                 <div>
                     <form method ="post" th:action="@{/redigera}">
                     <input type="hidden" th:name="id" th:value="${dagbok.id}" />
-                    <input type="text" th:name="rubrik" />
-                    <input type="date" th:name="datum" />
-                    <textarea name="text"></textarea>
+                    <input type="text" th:name="rubrik" required />
+                    <input type="date" th:name="datum" required />
+                    <textarea name="text" required></textarea>
                     <button type="submit">Spara ändringar</button>
                     </form>
                 </div>   

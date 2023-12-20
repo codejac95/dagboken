@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id = header>
-         <h1>Dagboken!</h1>
+         <h1>Dagboken</h1>
     </div>
 
     <a id=showAllPosts href="/dagbok">Visa alla inlägg</a>
@@ -18,10 +18,10 @@
     <div id = createBox>
         <h1>Skapa inlägg</h1>
         <form method="post" th:action="@{/skapa}">
-            <input type="text" name="rubrik" placeholder="Rubrik"><br><br>
-            <textarea name="text" placeholder="Text"></textarea><br>
+            <input type="text" name="rubrik" placeholder="Rubrik" required><br><br>
+            <textarea name="text" placeholder="Text" required></textarea><br>
 
-            <input type="date" name="datum"><br>          
+            <input type="date" name="datum" required><br>          
             <button>Lägg till</button>
         </form>
     </div>
